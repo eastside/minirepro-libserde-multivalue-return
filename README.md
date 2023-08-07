@@ -12,8 +12,9 @@ Or with:
 
     RUSTFLAGS="-C target-feature=+multivalue" cargo wasi build
 
-The error I get on my system is...
+The error I get on my system is as follows. Note that if you build with --release turned on, compilation does work (for some reason?)
 
+```
 MacBook-Pro:minirepro-libserde-multivalue-return adam$ RUSTFLAGS="-C target-feature=+multivalue" cargo build --target=wasm32-unknown-unknown
    Compiling ryu v1.0.15
    Compiling itoa v1.0.9
@@ -29,5 +30,5 @@ error: linking with `rust-lld` failed: exit status: 1
           
           rust-lld: error: function signature mismatch: _ZN4core5slice6memchr14memchr_aligned17ha1de217aab31511aE
           >>> defined as (i32, i32, i32) -> i32 in /Users/adam/minirepro-libserde-multivalue-return/target/wasm32-unknown-unknown/debug/deps/libserde_json-91e5a43084480c19.rlib(serde_json-91e5a43084480c19.serde_json.fbc0da11-cgu.1.rcgu.o)
-          >>> defined as (i32, i32, i32, i32) -> void in /Users/adam/.rustup/toolchains/nightly-x86_64-apple-darwin/lib/rustlib/wasm32-unknown-unknown/lib/libcore-658cdd8d8c2a0952.rlib(core-658cdd8d8c2a0952.core.a4eb9613-cgu.0.rcgu.o)
-        
+          >>> defined as (i32, i32, i32, i32) -> void in /Users/adam/.rustup/toolchains/nightly-x86_64-apple-darwin/lib/rustlib/wasm32-unknown-unknown/lib/libcore-658cdd8d8c2a0952.rlib(core-658cdd8d8c2a0952.core.a4eb9613-cgu.0.rcgu.o)     
+```
